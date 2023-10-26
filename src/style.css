@@ -25,7 +25,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -62,6 +61,69 @@ h1 {
 
 .read-the-docs {
   color: #888;
+}
+
+.turno-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #747bff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.numero-turno {
+  font-size: 6rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.texto-turno {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+  text-align: center;
+}
+
+.espacioBotones {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4%;
+}
+
+#anterior {
+  width: 200px;
+  background-color: gold;
+  font-weight: bold;
+}
+#reset {
+  width: 200px;
+  background-color: maroon;
+  font-weight: bold;
+}
+#siguiente {
+  width: 200px;
+  background-color: gold;
+  font-weight: bold;
+}
+
+.numeroOperario {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
+  margin-top: 4%;
+  font-weight: bold;
+}
+
+.numeroOperario input {
+  text-align: center;
+}
+
+.numeroOperario button {
+  border: solid gold;
 }
 
 button {
