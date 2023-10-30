@@ -3,10 +3,13 @@ import "./style.css";
 let turnoActual: number = 1;
 
 function getTurno(): string {
+  let resultado: string;
+  resultado = turnoActual.toString();
   if (turnoActual < 10) {
-    return "0" + turnoActual;
+    resultado = resultado.padStart(2, "0");
+    return resultado;
   }
-  return turnoActual.toString();
+  return resultado;
 }
 
 function printTurno(): void {
@@ -17,7 +20,7 @@ function printTurno(): void {
 }
 
 function sumarTurno(): void {
-  turnoActual = turnoActual + 1;
+  turnoActual++;
   printTurno();
 }
 
@@ -27,36 +30,36 @@ function resetTurno(): void {
 }
 
 function restarTurno(): void {
-  turnoActual = turnoActual - 1;
+  turnoActual--;
+  turnoActual = turnoActual < 0 ? 0 : turnoActual;
   printTurno();
 }
 
 function numeroOperario(): void {
-  let numeroManual = parseInt(
-    (document.getElementById("numeroManual") as HTMLInputElement).value
-  );
-  turnoActual = numeroManual;
-  printTurno();
+  const inputElement = document.getElementById("numeroManual");
+  if (inputElement && inputElement instanceof HTMLInputElement) {
+    turnoActual = parseInt(inputElement.value);
+    printTurno();
+  }
 }
 
 const botonAnterior = document.getElementById("anterior");
-const botonReset = document.getElementById("reset");
-const botonSiguiente = document.getElementById("siguiente");
-const botonCambioTurno = document.getElementById("cambiarTurno");
-
-if (botonSiguiente !== null && botonSiguiente !== undefined) {
-  botonSiguiente.addEventListener("click", sumarTurno);
-}
-
-if (botonAnterior !== null && botonAnterior !== undefined) {
+if (botonAnterior && botonAnterior instanceof HTMLButtonElement) {
   botonAnterior.addEventListener("click", restarTurno);
 }
 
-if (botonReset !== null && botonReset !== undefined) {
+const botonReset = document.getElementById("reset");
+if (botonReset && botonReset instanceof HTMLButtonElement) {
   botonReset.addEventListener("click", resetTurno);
 }
 
-if (botonCambioTurno !== null && botonCambioTurno !== undefined) {
+const botonSiguiente = document.getElementById("siguiente");
+if (botonSiguiente && botonSiguiente instanceof HTMLButtonElement) {
+  botonSiguiente.addEventListener("click", sumarTurno);
+}
+
+const botonCambioTurno = document.getElementById("cambiarTurno");
+if (botonCambioTurno && botonCambioTurno instanceof HTMLButtonElement) {
   botonCambioTurno.addEventListener("click", numeroOperario);
 }
 
